@@ -22,9 +22,9 @@ public class LoginDao {
 	public LoginBeans findAccount(String name, String password) {
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)){
 			String sql = "SELECT ID, NAME, PASSWORD "
-					+ "FROM ACCOUNT "
-					+ "WHERE NAME = ? "
-					+ "AND PASSWORD = ?";
+					   + "FROM ACCOUNT "
+					   + "WHERE NAME = ? "
+					   + "AND PASSWORD = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, name);
 			pStmt.setString(2, password);

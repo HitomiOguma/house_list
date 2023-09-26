@@ -14,17 +14,16 @@ import javax.servlet.http.HttpSession;
 
 import dao.HouseDao;
 import dao.MovingDao;
-import model.HouseBeans;
 import model.MovingBeans;
 
 /**
- * Servlet implementation class AllServlet
+ * Servlet implementation class ListGetServlet
  */
-@WebServlet("/All")
-public class AllServlet extends HttpServlet {
+@WebServlet("/ListGet")
+public class ListGetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HouseDao houseDao = new HouseDao();
 		//検索フォームの建物タイプ設定
 		// 1. データベースからhousing_typeの一覧を取得
@@ -41,33 +40,13 @@ public class AllServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("uniqueHousingTypes", uniqueHousingTypes);
 
-		// HouseDaoを使ってデータを取得
-		/*HouseDao houseDao = new HouseDao();*/
-		List<HouseBeans> houseList = houseDao.findAll();
-		// リクエスト属性にデータを設定
-		request.setAttribute("houseList", houseList);
-
-		//一覧		
+		//予定一覧		
 		MovingDao movingDao = new MovingDao();
-		List<MovingBeans> movingList = movingDao.searchAll();
+		List<MovingBeans>movingList = movingDao.findAll();
 		request.setAttribute("movingList", movingList);
-		
-		/*//テスト
-		for (MovingBeans moving : movingList) {
-			System.out.println("Moving Date: " + moving.getMoving_date());
-			if (moving.getHouse() != null) {
-				System.out.println("Order Number: " + moving.getHouse().getOrder_number());
-				System.out.println("House Name: " + moving.getHouse().getHouse_name());
-				System.out.println("Housing Type: " + moving.getHouse().getHousing_type());
-			} else {
-				System.out.println("No associated HouseBeans for this moving!");
-			}
-		}
-		*/
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/all.jsp");
-		dispatcher.forward(request, response);
 
+		//フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/list.jsp");
+		dispatcher.forward(request, response);
 	}
 }
-

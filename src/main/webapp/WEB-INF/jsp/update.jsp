@@ -17,6 +17,7 @@
 				<li class="nav-item">
 						<form action="/house_list/Detail" method="get">
 						<c:forEach items="${oneHouseList}" var="oneHouse">
+						
 						<input type="hidden" id="order_number" name="order_number" value = "${oneHouse.order_number}">
 						
 							<button type="submit" class="nav-link active" aria-current="page">戻る</button>
@@ -61,9 +62,7 @@
 </c:choose> --%>
    </form>
 <button type="submit" class="btn btn-primary" name="action" onclick="setFormAction('/house_list/HouseUpdate')">登録</button>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  削除
-</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> 削除</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

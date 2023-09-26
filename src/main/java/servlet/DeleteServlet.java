@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,9 +33,11 @@ public class DeleteServlet extends HttpServlet {
 			MovingDao movingDao = new MovingDao();
 			movingDao.deleteMoving2(house_id);
 		}
-		//フォワード
+		/*//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/list.jsp");
-		dispatcher.forward(request, response);
+		dispatcher.forward(request, response);*/
+		// リダイレクト
+	    response.sendRedirect("/house_list/ListGet");
 
 
 	}

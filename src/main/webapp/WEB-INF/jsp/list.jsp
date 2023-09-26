@@ -35,11 +35,10 @@
 		</div>
 	</nav>
 	<form action="/house_list/Search" method="post">
-		<input type="text" id="order_number" name="order_number"
-			placeholder="受注番号を入力"> <input type="text" id="house_name"
-			name="house_name" placeholder="物件名を入力"><br> <label
-			for="housing_type"></label> <select id="housing_type"
-			name="housing_type">
+		<input type="text" id="order_number" name="order_number" placeholder="受注番号を入力"> 
+		<input type="text" id="house_name" name="house_name" placeholder="物件名を入力"><br> 
+		<label for="housing_type"></label> 
+		<select id="housing_type" name="housing_type">
 			<option value="">物件タイプを選択</option>
 			<c:forEach items="${uniqueHousingTypes}" var="housing_type">
 				<option value="${housing_type}">${housing_type}</option>
