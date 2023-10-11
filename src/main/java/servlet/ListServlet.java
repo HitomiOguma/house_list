@@ -50,4 +50,30 @@ public class ListServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/list.jsp");
 		dispatcher.forward(request, response);
 	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HouseDao houseDao = new HouseDao();
+		//検索フォームの建物タイプ設定
+		// 1. データベースからhousing_typeの一覧を取得
+		List<String> housingTypeList =houseDao.findHousingTypes();
+
+		// 2. 空白や重複を削除して整理
+		List<String> uniqueHousingTypes = new ArrayList<>();
+		for (String housingType : housingTypeList) {
+			if (housingType != null && !housingType.trim().isEmpty() && !uniqueHousingTypes.contains(housingType)) {
+				uniqueHousingTypes.add(housingType);
+			}
+		}
+		// 3. uniqueHousingTypes をJSPに渡す
+		HttpSession session = request.getSession();
+		session.setAttribute("uniqueHousingTypes", uniqueHousingTypes);
+
+		//予定一覧		
+		MovingDao movingDao = new MovingDao();
+		List<MovingBeans>movingList = movingDao.findAll();
+		request.setAttribute("movingList", movingList);
+
+		//フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/list.jsp");
+		dispatcher.forward(request, response);
+	}
 }

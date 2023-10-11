@@ -74,7 +74,7 @@
 			</c:choose>
 
 			<tr class="${bgColor}">
-				<td><a href="/house_list/Detail?order_number=${house.order_number}">${house.order_number}</a></td>
+				<td><a href="/house_list/Detail?order_number=${house.order_number}&id=${house.id}">${house.order_number}</a></td>
 				<td>${house.house_name}</td>
 				<td>${house.housing_type}</td>
 				<td>${moving.moving_date}</td>

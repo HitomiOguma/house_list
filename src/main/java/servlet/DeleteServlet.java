@@ -37,7 +37,7 @@ public class DeleteServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/list.jsp");
 		dispatcher.forward(request, response);*/
 		// リダイレクト
-	    response.sendRedirect("/house_list/ListGet");
+	    response.sendRedirect("/house_list/List");
 
 
 	}

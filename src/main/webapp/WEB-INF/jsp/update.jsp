@@ -17,9 +17,8 @@
 				<li class="nav-item">
 						<form action="/house_list/Detail" method="get">
 						<c:forEach items="${oneHouseList}" var="oneHouse">
-						
 						<input type="hidden" id="order_number" name="order_number" value = "${oneHouse.order_number}">
-						
+						<input type="hidden" id="id" name="id" value = "${oneHouse.id}">
 							<button type="submit" class="nav-link active" aria-current="page">戻る</button>
 						</c:forEach>	
 						</form>
